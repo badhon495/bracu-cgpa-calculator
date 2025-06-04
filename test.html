@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: #0a0a0f;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .test-word {
+            position: fixed;
+            font-size: 60px;
+            font-weight: bold;
+            color: #ff6b9d;
+            text-shadow: 0 0 20px #ff6b9d;
+            z-index: 999;
+        }
+        
+        @keyframes fall {
+            from { top: -100px; }
+            to { top: 100vh; }
+        }
+        
+        .falling {
+            animation: fall 5s linear forwards;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Page - Should show falling CG words</h1>
+    
+    <div class="test-word" style="left: 100px; top: 100px;">CG</div>
+    <div class="test-word falling" style="left: 300px;">CG</div>
+    
+    <script>
+        // Create a falling CG word every 2 seconds
+        setInterval(() => {
+            const word = document.createElement('div');
+            word.textContent = 'CG';
+            word.className = 'test-word falling';
+            word.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            document.body.appendChild(word);
+            
+            setTimeout(() => {
+                if (word.parentNode) {
+                    word.parentNode.removeChild(word);
+                }
+            }, 5000);
+        }, 2000);
+    </script>
+</body>
+</html>

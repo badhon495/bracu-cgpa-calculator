@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator - Modern & Beautiful</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="simple-cg.js"></script>
+</head>
+<body>
+    <div class="App">
+        <!-- Falling CG Letters Background -->
+        <div class="falling-letters-container" id="fallingLettersContainer"></div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h1>CGPA Calculator</h1>
+            <p>Calculate your new CGPA with style! Enter your current academic details and course information to get your updated CGPA.</p>
+
+            <div class="calculator-container">
+                <!-- Current Academic Information -->
+                <div class="input-section">
+                    <h2>📊 Current Academic Status</h2>
+                    
+                    <div class="form-group">
+                        <label for="currentCgpa">Current CGPA:</label>
+                        <input type="number" id="currentCgpa" step="0.01" placeholder="e.g., 3.71">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previousCredits">Total Credits Completed (before this semester):</label>
+                        <input type="number" id="previousCredits" placeholder="e.g., 102" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numCourses">Number of Courses This Semester:</label>
+                        <input type="number" id="numCourses" placeholder="e.g., 4" min="0">
+                    </div>
+                    
+                    <button id="generateCoursesButton" class="generate">✨ Generate Course Fields</button>
+                </div>
+
+                <!-- Semester Courses -->
+                <div class="input-section">
+                    <h2>📚 Semester Courses</h2>
+                    <div id="courseInputsContainer">
+                        <!-- Course inputs will be generated here -->
+                    </div>
+                </div>
+
+                <button id="calculateButton">🧮 Calculate New CGPA</button>
+
+                <div id="result"></div>
+                <div id="error-message" class="error" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Particles JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
