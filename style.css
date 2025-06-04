@@ -325,12 +325,248 @@ input[type="number"] {
     position: relative;
 }
 
-input[type="number"]:focus {
+/* Select dropdown styling to match calculator-container glass-morphism */
+select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(25px);
+    color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 3rem;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 107, 157, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced glass-morphism dropdown menu styling - Fixed readability */
+select[multiple],
+select[size] {
+    border-radius: 25px;
+    overflow: hidden;
+    background: rgba(20, 20, 30, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.25),
+        0 0 20px rgba(255, 107, 157, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Firefox specific glass-morphism dropdown styling - Enhanced for Mozilla */
+@-moz-document url-prefix() {
+    select {
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(25px) !important;
+    }
+    
+    select option {
+        background: #2a292e !important;
+        background-image: linear-gradient(135deg, 
+            rgba(20, 20, 30, 0.95), 
+            rgba(40, 40, 50, 0.95)) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    select option:hover {
+        background: #3a3940 !important;
+        background-image: linear-gradient(135deg, 
+            rgba(50, 50, 60, 0.95), 
+            rgba(70, 70, 80, 0.95)) !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 107, 157, 0.3) !important;
+    }
+    
+    select option:checked,
+    select option:selected {
+        background: rgba(255, 107, 157, 0.4) !important;
+        background-image: linear-gradient(135deg, 
+            rgba(255, 107, 157, 0.35), 
+            rgba(196, 113, 237, 0.35)) !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        border-color: rgba(255, 107, 157, 0.5) !important;
+    }
+    
+    select option:disabled {
+        background: #1a1a1e !important;
+        color: rgba(255, 255, 255, 0.4) !important;
+        border-color: rgba(255, 255, 255, 0.05) !important;
+    }
+}
+
+/* Select dropdown menu styling - rounds the options list */
+select {
+    border-radius: 12px;
+}
+
+/* Enhanced glass-morphism scrollbar for dropdown */
+select::-webkit-scrollbar {
+    width: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+}
+
+select::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+select::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 157, 0.6), 
+        rgba(196, 113, 237, 0.6));
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 2px 8px rgba(255, 107, 157, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+select::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 157, 0.8), 
+        rgba(196, 113, 237, 0.8));
+    box-shadow: 
+        0 4px 12px rgba(255, 107, 157, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Glass-morphism dropdown options styling - Fixed readability with Firefox fallback */
+select option {
+    /* Fallback for browsers without backdrop-filter support */
+    background: #2a292e !important;
+    background-image: linear-gradient(135deg, 
+        rgba(20, 20, 30, 0.95), 
+        rgba(40, 40, 50, 0.95)) !important;
+    
+    /* Enhanced glass effect for supporting browsers */
+    background: rgba(20, 20, 30, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    padding: 0.8rem !important;
+    font-size: 1rem !important;
+    border-radius: 0 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 0 10px rgba(255, 107, 157, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* First and last option rounded corners for dropdown menu */
+select option:first-child {
+    border-radius: 25px 25px 0 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+select option:last-child {
+    border-radius: 0 0 25px 25px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Glass-morphism hover and selected states - Enhanced Firefox compatibility */
+select option:hover {
+    /* Fallback for browsers without backdrop-filter support */
+    background: #3a3940 !important;
+    background-image: linear-gradient(135deg, 
+        rgba(50, 50, 60, 0.95), 
+        rgba(70, 70, 80, 0.95)) !important;
+    
+    /* Enhanced glass effect for supporting browsers */
+    background: rgba(40, 40, 50, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    
+    color: #ffffff !important;
+    border-color: rgba(255, 107, 157, 0.3) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.25),
+        0 0 15px rgba(255, 107, 157, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+select option:checked,
+select option:selected {
+    /* Fallback for browsers without backdrop-filter support */
+    background: rgba(255, 107, 157, 0.4) !important;
+    background-image: linear-gradient(135deg, 
+        rgba(255, 107, 157, 0.35), 
+        rgba(196, 113, 237, 0.35)) !important;
+    
+    /* Enhanced glass effect for supporting browsers */
+    background: rgba(255, 107, 157, 0.3) !important;
+    backdrop-filter: blur(20px) !important;
+    
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(255, 107, 157, 0.5) !important;
+    box-shadow: 
+        0 8px 25px rgba(255, 107, 157, 0.4),
+        0 0 20px rgba(255, 107, 157, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Disabled option glass-morphism styling */
+select option:disabled {
+    background: #1a1a1e !important;
+    backdrop-filter: blur(10px) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    text-shadow: none !important;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Hover states for both inputs and selects */
+input[type="number"]:focus,
+select:focus {
     outline: none;
-    border-color: #ff6b9d;
-    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3), 0 0 40px rgba(255, 107, 157, 0.1);
-    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 107, 157, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
     transform: translateY(-2px);
+}
+
+select:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(255, 107, 157, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
 }
 
 input[type="number"]::placeholder {
@@ -353,7 +589,7 @@ input[type="number"] {
 
 button {
     padding: 1rem 2rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: 12px;
@@ -461,6 +697,73 @@ button.generate:hover {
     margin: 0;
     background: rgba(255, 255, 255, 0.08);
     flex: 0 0 auto;
+}
+
+/* Course GPA select styling */
+.course-row select.course-gpa,
+select.course-gpa,
+select[id^="courseGpa_"] {
+    width: 120px;
+    padding: 0.8rem 1rem;
+    padding-right: 2rem;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(25px);
+    flex: 0 0 auto;
+    background-size: 0.8rem;
+    background-position: right 0.5rem center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 107, 157, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Course GPA select focus and hover states */
+.course-row select.course-gpa:focus,
+select.course-gpa:focus,
+select[id^="courseGpa_"]:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 107, 157, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12) !important;
+    transform: translateY(-2px);
+}
+
+.course-row select.course-gpa:hover,
+select.course-gpa:hover,
+select[id^="courseGpa_"]:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(255, 107, 157, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Calculate button inside semester section */
+#semesterCoursesSection button {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Result and Error Styling */
@@ -571,6 +874,115 @@ small {
     }
 }
 
+/* Hidden sections styling */
+.hidden-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+    pointer-events: none;
+}
+
+.show-section {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Smooth reveal animations */
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-animation {
+    animation: slideInDown 0.6s ease-out;
+}
+
+/* How to Use Section Styling */
+.how-to-use {
+    margin-top: 2rem;
+}
+
+.how-to-use h2 {
+    color: #ff6b9d;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 107, 157, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 107, 157, 0.1);
+}
+
+.step-number {
+    background: linear-gradient(135deg, #ff6b9d, #c471ed);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
+.step p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsive design for steps */
+@media (max-width: 768px) {
+    .step {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .step-number {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .step p {
+        font-size: 0.9rem;
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     h1 {
@@ -598,6 +1010,10 @@ small {
     }
     
     .course-row input[type="number"] {
+        width: 100%;
+    }
+    
+    .course-row select.course-gpa {
         width: 100%;
     }
     

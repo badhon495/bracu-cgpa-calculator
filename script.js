@@ -377,6 +377,18 @@ class CGPACalculator {
         this.errorDiv.style.display = 'none';
     }
 
+    showSemesterSections() {
+        const semesterSection = document.getElementById('semesterCoursesSection');
+        
+        // Show section with smooth animation
+        semesterSection.style.display = 'block';
+        
+        // Add reveal animation
+        setTimeout(() => {
+            semesterSection.classList.add('reveal-animation');
+        }, 50);
+    }
+
     displayError(message) {
         this.clearMessages();
         this.errorDiv.textContent = message;
@@ -404,38 +416,10 @@ class CGPACalculator {
             return;
         }
 
-        // Show helpful message if generating courses
-        if (count > 0) {
-            const infoDiv = document.createElement('div');
-            infoDiv.style.cssText = `
-                background: rgba(78, 205, 196, 0.1);
-                border: 1px solid rgba(78, 205, 196, 0.3);
-                border-radius: 8px;
-                padding: 1rem;
-                margin-bottom: 1rem;
-                color: #4ecdc4;
-                font-size: 0.9rem;
-                text-align: center;
-                animation: fadeInUp 0.5s ease-out;
-            `;
-            infoDiv.innerHTML = `
-                ✨ Generated ${count} course field${count > 1 ? 's' : ''} with credits pre-filled to <strong>3</strong>.<br>
-                <small style="opacity: 0.8;">You can edit the credits for each course as needed!</small>
-            `;
-            this.courseInputsContainer.appendChild(infoDiv);
-            
-            // Remove info after 4 seconds
-            setTimeout(() => {
-                if (infoDiv.parentNode) {
-                    infoDiv.style.opacity = '0';
-                    setTimeout(() => {
-                        if (infoDiv.parentNode) {
-                            infoDiv.parentNode.removeChild(infoDiv);
-                        }
-                    }, 300);
-                }
-            }, 4000);
-        }
+        // Show the semester courses section and calculate button
+        this.showSemesterSections();
+
+
 
         // Add staggered animation to course rows
         for (let i = 0; i < count; i++) {
@@ -467,14 +451,36 @@ class CGPACalculator {
 
         const gpaText = document.createElement('span');
         gpaText.textContent = "GPA:";
-        const gpaInput = document.createElement('input');
-        gpaInput.type = 'number';
-        gpaInput.step = '0.01';
-        gpaInput.placeholder = 'e.g., 4.0';
+        const gpaInput = document.createElement('select');
         gpaInput.id = `courseGpa_${index}`;
         gpaInput.classList.add('course-gpa');
-        gpaInput.min = "0";
-        gpaInput.title = "Enter the GPA you achieved in this course";
+        gpaInput.title = "Select the GPA you achieved in this course";
+
+        // Create dropdown options
+        const gpaValues = [
+            { value: '', text: 'Select GPA', disabled: true, selected: true },
+            { value: '4', text: '4.0' },
+            { value: '3.7', text: '3.7' },
+            { value: '3.3', text: '3.3' },
+            { value: '3', text: '3.0' },
+            { value: '2.7', text: '2.7' },
+            { value: '2.3', text: '2.3' },
+            { value: '2', text: '2.0' },
+            { value: '1.7', text: '1.7' },
+            { value: '1.3', text: '1.3' },
+            { value: '1', text: '1.0' },
+            { value: '0.7', text: '0.7' },
+            { value: '0', text: '0.0' }
+        ];
+
+        gpaValues.forEach(gpaOption => {
+            const option = document.createElement('option');
+            option.value = gpaOption.value;
+            option.textContent = gpaOption.text;
+            if (gpaOption.disabled) option.disabled = true;
+            if (gpaOption.selected) option.selected = true;
+            gpaInput.appendChild(option);
+        });
 
         // Add input validation and enhancement
         [creditsInput, gpaInput].forEach(input => {
