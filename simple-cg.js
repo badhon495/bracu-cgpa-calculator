@@ -3,6 +3,8 @@ let activeCGWords = 0;
 let cgWordObjects = []; // Track all CG words for collision
 let MIN_CG_WORDS = 3;
 let MAX_CG_WORDS = 6;
+let isTabVisible = true;
+let generationTimeoutId = null;
 
 function updateScreenBasedLimits() {
     const screenWidth = window.innerWidth;
@@ -29,7 +31,47 @@ function updateScreenBasedLimits() {
 updateScreenBasedLimits();
 window.addEventListener('resize', updateScreenBasedLimits);
 
+// Handle tab visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Tab became inactive - pause everything
+        pauseAnimation();
+    } else {
+        // Tab became active - resume everything
+        resumeAnimation();
+    }
+});
+
+function pauseAnimation() {
+    isTabVisible = false;
+    
+    // Clear any pending generation timeouts
+    if (generationTimeoutId) {
+        clearTimeout(generationTimeoutId);
+        generationTimeoutId = null;
+    }
+    
+    // Remove all existing CG words to prevent accumulation
+    cgWordObjects.forEach(obj => {
+        if (obj.element && obj.element.parentNode) {
+            obj.element.parentNode.removeChild(obj.element);
+        }
+    });
+    cgWordObjects = [];
+    activeCGWords = 0;
+}
+
+function resumeAnimation() {
+    isTabVisible = true;
+    
+    // Restart generation
+    startContinuousGeneration();
+}
+
 function createFallingCG() {
+    // Don't create if tab is not visible
+    if (!isTabVisible) return;
+    
     // Use probability-based creation for natural randomness
     const probability = activeCGWords < MIN_CG_WORDS ? 0.9 : 
                        activeCGWords >= MAX_CG_WORDS ? 0.1 : 
@@ -83,6 +125,9 @@ function createFallingCG() {
 
 // Simple physics update function
 function updatePhysics() {
+    // Don't update if tab is not visible
+    if (!isTabVisible) return;
+    
     cgWordObjects.forEach((obj, index) => {
         // Update position with much slower movement
         obj.x += obj.vx;
@@ -156,9 +201,20 @@ function checkCollision(obj1, obj2) {
 
 // Continuous random generation instead of batch creation
 function startContinuousGeneration() {
+    // Clear any existing generation timeout first
+    if (generationTimeoutId) {
+        clearTimeout(generationTimeoutId);
+    }
+    
     const scheduleNext = () => {
+        // Don't schedule if tab is not visible
+        if (!isTabVisible) return;
+        
         const randomDelay = Math.random() * 2000 + 500; // 0.5s to 2.5s
-        setTimeout(() => {
+        generationTimeoutId = setTimeout(() => {
+            // Double-check visibility before creating
+            if (!isTabVisible) return;
+            
             createFallingCG();
             scheduleNext(); // Schedule next word
         }, randomDelay);

@@ -6,6 +6,8 @@ class SimpleFallingLetters {
         this.letterCount = 0;
         this.cgWords = []; // Array to track all active CG words for collision detection
         this.animationId = null;
+        this.isTabVisible = true; // Track tab visibility
+        this.generationTimeoutId = null; // Track generation timeout
         this.updateScreenBasedLimits(); // Set responsive limits
         this.init();
     }
@@ -40,6 +42,11 @@ class SimpleFallingLetters {
             this.updateScreenBasedLimits();
         });
         
+        // Handle tab visibility changes
+        document.addEventListener('visibilitychange', () => {
+            this.handleVisibilityChange();
+        });
+        
         // Start continuous random generation
         this.startContinuousGeneration();
         
@@ -47,12 +54,68 @@ class SimpleFallingLetters {
         this.startPhysicsLoop();
     }
 
+    handleVisibilityChange() {
+        if (document.hidden) {
+            // Tab became inactive - pause everything
+            this.pauseAnimation();
+        } else {
+            // Tab became active - resume everything
+            this.resumeAnimation();
+        }
+    }
+
+    pauseAnimation() {
+        this.isTabVisible = false;
+        
+        // Stop physics animation
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+            this.animationId = null;
+        }
+        
+        // Clear any pending generation timeouts
+        if (this.generationTimeoutId) {
+            clearTimeout(this.generationTimeoutId);
+            this.generationTimeoutId = null;
+        }
+        
+        // Remove all existing CG words to prevent accumulation
+        this.cgWords.forEach(cgWord => {
+            if (cgWord.element && cgWord.element.parentNode) {
+                cgWord.element.parentNode.removeChild(cgWord.element);
+            }
+        });
+        this.cgWords = [];
+        this.letterCount = 0;
+    }
+
+    resumeAnimation() {
+        this.isTabVisible = true;
+        
+        // Restart physics loop
+        this.startPhysicsLoop();
+        
+        // Restart generation
+        this.startContinuousGeneration();
+    }
+
     startContinuousGeneration() {
+        // Clear any existing generation timeout first
+        if (this.generationTimeoutId) {
+            clearTimeout(this.generationTimeoutId);
+        }
+        
         // Random interval generation for natural feel
         const scheduleNextWord = () => {
+            // Don't schedule if tab is not visible
+            if (!this.isTabVisible) return;
+            
             const randomDelay = Math.random() * 2000 + 500; // 0.5s to 2.5s random delay
             
-            setTimeout(() => {
+            this.generationTimeoutId = setTimeout(() => {
+                // Double-check visibility before creating
+                if (!this.isTabVisible) return;
+                
                 // Create word if we're below maximum and randomly based on current count
                 const shouldCreate = this.letterCount < this.minLetters || 
                     (this.letterCount < this.maxLetters && Math.random() < this.getCreationProbability());
@@ -78,6 +141,9 @@ class SimpleFallingLetters {
 
     startPhysicsLoop() {
         const updatePhysics = () => {
+            // Only continue if tab is visible
+            if (!this.isTabVisible) return;
+            
             this.updateCGWordPositions();
             this.checkCollisions();
             this.cleanupOffscreenWords();
@@ -249,6 +315,11 @@ class SimpleFallingLetters {
         // Stop physics animation loop
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
+        }
+        
+        // Clear generation timeout
+        if (this.generationTimeoutId) {
+            clearTimeout(this.generationTimeoutId);
         }
         
         // Clean up all CG words
