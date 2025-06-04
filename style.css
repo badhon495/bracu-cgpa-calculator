@@ -337,6 +337,20 @@ input[type="number"]::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
+/* Remove spinner buttons from number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
 button {
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -394,14 +408,16 @@ button.generate:hover {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 2rem;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     transition: all 0.3s ease;
     animation: slideInRight 0.6s ease-out;
+    width: 100%;
 }
 
 @keyframes slideInRight {
@@ -424,7 +440,8 @@ button.generate:hover {
 
 .course-row > label {
     margin: 0;
-    flex-basis: 100px;
+    flex: 0 0 auto;
+    min-width: 120px;
     font-weight: 600;
     color: #45b7d1;
     text-shadow: 0 0 10px rgba(69, 183, 209, 0.3);
@@ -439,10 +456,11 @@ button.generate:hover {
 }
 
 .course-row input[type="number"] {
-    width: 100px;
+    width: 120px;
     padding: 0.8rem 1rem;
     margin: 0;
     background: rgba(255, 255, 255, 0.08);
+    flex: 0 0 auto;
 }
 
 /* Result and Error Styling */
