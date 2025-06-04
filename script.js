@@ -404,6 +404,39 @@ class CGPACalculator {
             return;
         }
 
+        // Show helpful message if generating courses
+        if (count > 0) {
+            const infoDiv = document.createElement('div');
+            infoDiv.style.cssText = `
+                background: rgba(78, 205, 196, 0.1);
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                border-radius: 8px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                color: #4ecdc4;
+                font-size: 0.9rem;
+                text-align: center;
+                animation: fadeInUp 0.5s ease-out;
+            `;
+            infoDiv.innerHTML = `
+                ✨ Generated ${count} course field${count > 1 ? 's' : ''} with credits pre-filled to <strong>3</strong>.<br>
+                <small style="opacity: 0.8;">You can edit the credits for each course as needed!</small>
+            `;
+            this.courseInputsContainer.appendChild(infoDiv);
+            
+            // Remove info after 4 seconds
+            setTimeout(() => {
+                if (infoDiv.parentNode) {
+                    infoDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        if (infoDiv.parentNode) {
+                            infoDiv.parentNode.removeChild(infoDiv);
+                        }
+                    }, 300);
+                }
+            }, 4000);
+        }
+
         // Add staggered animation to course rows
         for (let i = 0; i < count; i++) {
             setTimeout(() => {
@@ -429,6 +462,8 @@ class CGPACalculator {
         creditsInput.classList.add('course-credit');
         creditsInput.min = "0.5";
         creditsInput.step = "0.5";
+        creditsInput.value = "3"; // Auto-fill with 3 (user can edit)
+        creditsInput.title = "Credits auto-filled with 3, but you can change this value";
 
         const gpaText = document.createElement('span');
         gpaText.textContent = "GPA:";
@@ -439,11 +474,16 @@ class CGPACalculator {
         gpaInput.id = `courseGpa_${index}`;
         gpaInput.classList.add('course-gpa');
         gpaInput.min = "0";
+        gpaInput.title = "Enter the GPA you achieved in this course";
 
         // Add input validation and enhancement
         [creditsInput, gpaInput].forEach(input => {
             input.addEventListener('focus', (e) => {
                 e.target.parentElement.style.transform = 'scale(1.02)';
+                // Highlight the auto-filled credits on first focus
+                if (input === creditsInput && input.value === '3') {
+                    input.select(); // Select the text for easy editing
+                }
             });
             
             input.addEventListener('blur', (e) => {

@@ -505,6 +505,54 @@ button.generate:hover {
     to { transform: rotate(360deg); }
 }
 
+/* Info notification styles */
+.course-info {
+    animation: fadeInUp 0.5s ease-out;
+    transition: opacity 0.3s ease;
+}
+
+/* Tooltip enhancements */
+input[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+/* Enhanced course row for auto-filled credits */
+.course-credit[value="3"] {
+    background: rgba(78, 205, 196, 0.08);
+    border-color: rgba(78, 205, 196, 0.2);
+}
+
+.course-credit[value="3"]:focus {
+    background: rgba(78, 205, 196, 0.15);
+    border-color: rgba(78, 205, 196, 0.4);
+}
+
+/* Small helper text styling */
+small {
+    animation: fadeIn 0.8s ease-out 0.5s both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     h1 {
