@@ -458,8 +458,8 @@ class CGPACalculator {
 
         // Create dropdown options
         const gpaValues = [
-            { value: '', text: 'Select GPA', disabled: true, selected: true },
-            { value: '4', text: '4.0' },
+            { value: '', text: 'Select GPA', disabled: true },
+            { value: '4', text: '4.0', selected: true },
             { value: '3.7', text: '3.7' },
             { value: '3.3', text: '3.3' },
             { value: '3', text: '3.0' },
