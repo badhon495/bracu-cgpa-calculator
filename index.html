@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en">           
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGPA Calculator</title>
+    <title>BRACU CGPA Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
     <link rel="stylesheet" href="style.css">
     <script src="simple-cg.js"></script>
-</head>
+  </head>
 <body>
     <div class="App">
         <!-- Falling CG Letters Background -->
@@ -15,8 +15,13 @@
         
         <!-- Main Content -->
         <div class="content">
-            <h1>CGPA Calculator</h1>
+            <h1>BRACU CGPA Calculator</h1>
             <p>Don’t worry, everything will be fine!</p>
+            <div style="margin-top: 1rem; text-align: center;">
+                <button onclick="window.open('https://badhon495.github.io/should-i-retake/', '_blank')" class="simple-calculator-btn">
+                    Extended Version
+                </button>
+            </div>
 
             <div class="calculator-container">
                 <!-- Current Academic Information -->
@@ -25,17 +30,17 @@
                     
                     <div class="form-group">
                         <label for="currentCgpa">Current CGPA</label>
-                        <input type="number" id="currentCgpa" placeholder="e.g., 3.25" min="0" max="4" step="0.01">
+                        <input type="number" id="currentCgpa" placeholder="e.g. 3.25" min="0" max="4" step="0.01">
                     </div>
 
                     <div class="form-group">
                         <label for="previousCredits">Total Credits Completed (before this semester)</label>
-                        <input type="number" id="previousCredits" placeholder="e.g., 102" min="0">
+                        <input type="number" id="previousCredits" placeholder="e.g. 12" min="0">
                     </div>
 
                     <div class="form-group">
                         <label for="numCourses">Number of Courses This Semester</label>
-                        <input type="number" id="numCourses" placeholder="e.g., 4" min="0">
+                        <input type="number" id="numCourses" placeholder="e.g. 4" min="0">
                         <small style="color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; margin-top: 0.5rem; display: block;">
                             💡 Course credits will be auto-filled with 3, but you can edit them
                         </small>
@@ -70,7 +75,7 @@
                     </div>
                     <div class="step">
                         <span class="step-number">3</span>
-                        <p>Contribute to the project if you can! Your improvements and suggestions are always welcome.</p>
+                        <p>Contribute to the project if you can! Your improvements and suggestions are always welcome. Visit the <a href="https://github.com/badhon495/BRACU-CGPA-Calculator" target="_blank" style="color: #8bd5ca; text-decoration: none;">GitHub repository</a> to contribute.</p>
                     </div>
                 </div>
             </div>

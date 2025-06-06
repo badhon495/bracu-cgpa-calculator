@@ -1,5 +1,35 @@
-/* CGPA Calculator - Modern Styling inspired by Guess-The-Youtuber */
+/* CGPA Calculator - Catppuccin Macchiato Theme */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Catppuccin Macchiato Color Variables */
+:root {
+    --ctp-rosewater: #f4dbd6;
+    --ctp-flamingo: #f0c6c6;
+    --ctp-pink: #f5bde6;
+    --ctp-mauve: #c6a0f6;
+    --ctp-red: #ed8796;
+    --ctp-maroon: #ee99a0;
+    --ctp-peach: #f5a97f;
+    --ctp-yellow: #eed49f;
+    --ctp-green: #a6da95;
+    --ctp-teal: #8bd5ca;
+    --ctp-sky: #91d7e3;
+    --ctp-sapphire: #7dc4e4;
+    --ctp-blue: #8aadf4;
+    --ctp-lavender: #b7bdf8;
+    --ctp-text: #cad3f5;
+    --ctp-subtext1: #b8c0e0;
+    --ctp-subtext0: #a5adcb;
+    --ctp-overlay2: #939ab7;
+    --ctp-overlay1: #8087a2;
+    --ctp-overlay0: #6e738d;
+    --ctp-surface2: #5b6078;
+    --ctp-surface1: #494d64;
+    --ctp-surface0: #363a4f;
+    --ctp-base: #24273a;
+    --ctp-mantle: #1e2030;
+    --ctp-crust: #181926;
+}
 
 * {
     margin: 0;
@@ -11,8 +41,8 @@ html, body {
     width: 100%;
     height: 100%;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background: #0a0a0f;
-    color: #ffffff;
+    background: #24273a;
+    color: var(--ctp-text);
     overflow-x: hidden;
 }
 
@@ -166,27 +196,27 @@ h1 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #ff6b9d, #4ecdc4, #45b7d1, #f9ca24, #6c5ce7);
+    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-teal), var(--ctp-blue), var(--ctp-yellow), var(--ctp-mauve));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+    text-shadow: 0 0 30px rgba(245, 189, 230, 0.3);
     animation: titleGlow 4s ease-in-out infinite alternate;
 }
 
 @keyframes titleGlow {
     0% {
-        filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.3));
+        filter: drop-shadow(0 0 20px rgba(245, 189, 230, 0.3));
     }
     100% {
-        filter: drop-shadow(0 0 40px rgba(78, 205, 196, 0.4));
+        filter: drop-shadow(0 0 40px rgba(139, 213, 202, 0.4));
     }
 }
 
 .content > p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 3rem;
+    color: var(--ctp-subtext0);
+    margin-bottom: 0.5rem;
     max-width: 600px;
     line-height: 1.6;
     animation: fadeInUp 1s ease-out 0.5s both;
@@ -205,18 +235,18 @@ h1 {
 
 /* Calculator Container */
 .calculator-container {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(54, 58, 79, 0.6);
     backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--ctp-surface1);
     border-radius: 24px;
     padding: 3rem;
     margin: 2rem 0;
     max-width: 800px;
     width: 100%;
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 0 60px rgba(255, 107, 157, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 25px 50px rgba(24, 25, 38, 0.4),
+        0 0 60px rgba(245, 189, 230, 0.05),
+        inset 0 1px 0 rgba(202, 211, 245, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     animation: fadeInUp 1s ease-out 0.8s both;
     position: relative;
@@ -230,17 +260,17 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(202, 211, 245, 0.1), transparent);
     transition: left 0.8s ease;
 }
 
 .calculator-container:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 
-        0 35px 70px rgba(0, 0, 0, 0.5), 
-        0 0 80px rgba(255, 107, 157, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.25);
+        0 35px 70px rgba(24, 25, 38, 0.5), 
+        0 0 80px rgba(245, 189, 230, 0.15),
+        inset 0 1px 0 rgba(202, 211, 245, 0.3);
+    border-color: var(--ctp-surface2);
 }
 
 .calculator-container:hover::before {
@@ -251,9 +281,9 @@ h1 {
 .input-section {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(73, 77, 100, 0.3);
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--ctp-surface0);
     transition: all 0.3s ease;
     animation: slideInLeft 0.8s ease-out;
 }
@@ -270,8 +300,8 @@ h1 {
 }
 
 .input-section:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(73, 77, 100, 0.5);
+    border-color: var(--ctp-surface1);
     transform: translateX(5px);
 }
 
@@ -279,7 +309,7 @@ h2 {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: #4ecdc4;
+    color: var(--ctp-teal);
     text-align: center;
     position: relative;
 }
@@ -292,7 +322,7 @@ h2::after {
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background: linear-gradient(90deg, #ff6b9d, #4ecdc4);
+    background: linear-gradient(90deg, var(--ctp-pink), var(--ctp-teal));
     border-radius: 2px;
 }
 
@@ -307,7 +337,7 @@ label {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--ctp-subtext1);
     transition: color 0.3s ease;
 }
 
@@ -315,10 +345,10 @@ input[type="number"] {
     width: 100%;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--ctp-surface0);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    background: var(--ctp-surface0);
+    color: var(--ctp-text);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     font-family: inherit;
@@ -330,11 +360,11 @@ select {
     width: 100%;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--ctp-surface1);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: var(--ctp-surface0) !important;
     backdrop-filter: blur(25px);
-    color: #ffffff;
+    color: var(--ctp-text);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
     position: relative;
@@ -342,15 +372,15 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1rem;
     padding-right: 3rem;
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.15),
-        0 0 20px rgba(255, 107, 157, 0.02),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 8px 25px rgba(24, 25, 38, 0.15),
+        0 0 20px rgba(245, 189, 230, 0.02),
+        inset 0 1px 0 rgba(202, 211, 245, 0.1);
 }
 
 /* Enhanced glass-morphism dropdown menu styling - Fixed readability */
@@ -358,13 +388,13 @@ select[multiple],
 select[size] {
     border-radius: 25px;
     overflow: hidden;
-    background: rgba(20, 20, 30, 0.85) !important;
+    background: var(--ctp-mantle) !important;
     backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid var(--ctp-surface1) !important;
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.25),
-        0 0 20px rgba(255, 107, 157, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        0 8px 25px rgba(24, 25, 38, 0.25),
+        0 0 20px rgba(245, 189, 230, 0.05),
+        inset 0 1px 0 rgba(202, 211, 245, 0.05) !important;
 }
 
 /* Firefox specific glass-morphism dropdown styling - Enhanced for Mozilla */
@@ -420,62 +450,62 @@ select {
 /* Enhanced glass-morphism scrollbar for dropdown */
 select::-webkit-scrollbar {
     width: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--ctp-surface0);
     backdrop-filter: blur(10px);
     border-radius: 25px;
 }
 
 select::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--ctp-surface1);
     backdrop-filter: blur(15px);
     border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--ctp-surface2);
+    box-shadow: inset 0 1px 3px rgba(24, 25, 38, 0.1);
 }
 
 select::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, 
-        rgba(255, 107, 157, 0.6), 
-        rgba(196, 113, 237, 0.6));
+        rgba(245, 189, 230, 0.6), 
+        rgba(198, 160, 246, 0.6));
     backdrop-filter: blur(20px);
     border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--ctp-overlay0);
     box-shadow: 
-        0 2px 8px rgba(255, 107, 157, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 2px 8px rgba(245, 189, 230, 0.3),
+        inset 0 1px 0 rgba(202, 211, 245, 0.3);
 }
 
 select::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, 
-        rgba(255, 107, 157, 0.8), 
-        rgba(196, 113, 237, 0.8));
+        rgba(245, 189, 230, 0.8), 
+        rgba(198, 160, 246, 0.8));
     box-shadow: 
-        0 4px 12px rgba(255, 107, 157, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        0 4px 12px rgba(245, 189, 230, 0.4),
+        inset 0 1px 0 rgba(202, 211, 245, 0.4);
 }
 
 /* Glass-morphism dropdown options styling - Fixed readability with Firefox fallback */
 select option {
     /* Fallback for browsers without backdrop-filter support */
-    background: #2a292e !important;
+    background: var(--ctp-mantle) !important;
     background-image: linear-gradient(135deg, 
-        rgba(20, 20, 30, 0.95), 
-        rgba(40, 40, 50, 0.95)) !important;
+        rgba(30, 32, 48, 0.95), 
+        rgba(54, 58, 79, 0.95)) !important;
     
     /* Enhanced glass effect for supporting browsers */
-    background: rgba(20, 20, 30, 0.85) !important;
+    background: var(--ctp-mantle) !important;
     backdrop-filter: blur(15px) !important;
     
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
+    border: 1px solid var(--ctp-surface0) !important;
+    color: var(--ctp-text) !important;
     padding: 0.8rem !important;
     font-size: 1rem !important;
     border-radius: 0 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    text-shadow: 0 1px 2px rgba(24, 25, 38, 0.3) !important;
     box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.2),
-        0 0 10px rgba(255, 107, 157, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        0 4px 15px rgba(24, 25, 38, 0.2),
+        0 0 10px rgba(245, 189, 230, 0.05),
+        inset 0 1px 0 rgba(202, 211, 245, 0.05) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -593,8 +623,8 @@ button {
     font-weight: 600;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-teal));
+    color: var(--ctp-base);
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
@@ -612,13 +642,13 @@ button::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(202, 211, 245, 0.2), transparent);
     transition: left 0.5s ease;
 }
 
 button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 15px 35px rgba(245, 189, 230, 0.4);
     filter: brightness(1.1);
 }
 
@@ -628,15 +658,75 @@ button:hover::before {
 
 button:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 5px 15px rgba(245, 189, 230, 0.3);
 }
 
 button.generate {
-    background: linear-gradient(135deg, #f9ca24, #6c5ce7);
+    background: linear-gradient(135deg, var(--ctp-yellow), var(--ctp-mauve));
 }
 
 button.generate:hover {
-    box-shadow: 0 15px 35px rgba(249, 202, 36, 0.4);
+    box-shadow: 0 15px 35px rgba(238, 212, 159, 0.4);
+}
+
+/* Simple Calculator Button - Inspired by Extended Version */
+.simple-calculator-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 2px solid var(--ctp-teal);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ctp-teal);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    margin: 0.5rem;
+    animation: fadeInUp 1s ease-out 1.4s both;
+}
+
+.simple-calculator-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 213, 202, 0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: 0;
+}
+
+.simple-calculator-btn:hover {
+    background: var(--ctp-teal);
+    color: var(--ctp-base);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(139, 213, 202, 0.3),
+        0 0 30px rgba(139, 213, 202, 0.2);
+    border-color: var(--ctp-teal);
+}
+
+.simple-calculator-btn:hover::before {
+    left: 100%;
+}
+
+.simple-calculator-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(139, 213, 202, 0.2);
+    transition: all 0.1s ease;
+}
+
+/* Focus state for accessibility */
+.simple-calculator-btn:focus-visible {
+    outline: 2px solid var(--ctp-teal);
+    outline-offset: 2px;
 }
 
 /* Course Row Styling */
@@ -648,8 +738,8 @@ button.generate:hover {
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--ctp-surface0);
+    border: 1px solid var(--ctp-surface1);
     border-radius: 12px;
     transition: all 0.3s ease;
     animation: slideInRight 0.6s ease-out;
@@ -668,10 +758,10 @@ button.generate:hover {
 }
 
 .course-row:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--ctp-surface1);
+    border-color: var(--ctp-surface2);
     transform: scale(1.02);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(24, 25, 38, 0.2);
 }
 
 .course-row > label {
@@ -679,13 +769,13 @@ button.generate:hover {
     flex: 0 0 auto;
     min-width: 120px;
     font-weight: 600;
-    color: #45b7d1;
-    text-shadow: 0 0 10px rgba(69, 183, 209, 0.3);
+    color: var(--ctp-blue);
+    text-shadow: 0 0 10px rgba(138, 173, 244, 0.3);
 }
 
 .course-row span {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--ctp-subtext1);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -695,7 +785,7 @@ button.generate:hover {
     width: 120px;
     padding: 0.8rem 1rem;
     margin: 0;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--ctp-surface1);
     flex: 0 0 auto;
 }
 
@@ -707,16 +797,16 @@ select[id^="courseGpa_"] {
     padding: 0.8rem 1rem;
     padding-right: 2.5rem;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-color: var(--ctp-surface1) !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
     background-repeat: no-repeat !important;
     background-position: right 0.75rem center !important;
     background-size: 1rem !important;
     backdrop-filter: blur(25px);
     flex: 0 0 auto;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--ctp-surface2);
     border-radius: 12px;
-    color: #ffffff;
+    color: var(--ctp-text);
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -725,9 +815,9 @@ select[id^="courseGpa_"] {
     -moz-appearance: none !important;
     cursor: pointer;
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.15),
-        0 0 20px rgba(255, 107, 157, 0.02),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 8px 25px rgba(24, 25, 38, 0.15),
+        0 0 20px rgba(245, 189, 230, 0.02),
+        inset 0 1px 0 rgba(202, 211, 245, 0.1);
 }
 
 /* Course GPA select focus and hover states */
@@ -772,33 +862,33 @@ select[id^="courseGpa_"]:hover {
     padding: 1.5rem;
     font-size: 1.3rem;
     font-weight: 600;
-    color: #4ecdc4;
-    background: rgba(78, 205, 196, 0.1);
-    border: 1px solid rgba(78, 205, 196, 0.3);
+    color: var(--ctp-green);
+    background: rgba(166, 218, 149, 0.1);
+    border: 1px solid rgba(166, 218, 149, 0.3);
     border-radius: 12px;
     text-align: center;
     animation: pulse 2s infinite;
-    box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
+    box-shadow: 0 0 20px rgba(166, 218, 149, 0.2);
 }
 
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
+        box-shadow: 0 0 20px rgba(166, 218, 149, 0.2);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(78, 205, 196, 0.4);
+        box-shadow: 0 0 30px rgba(166, 218, 149, 0.4);
     }
 }
 
 .error {
     margin-top: 1rem;
     padding: 1rem 1.5rem;
-    background: rgba(220, 53, 69, 0.1);
-    border: 1px solid rgba(220, 53, 69, 0.3);
+    background: rgba(237, 135, 150, 0.1);
+    border: 1px solid rgba(237, 135, 150, 0.3);
     border-radius: 12px;
-    color: #dc3545;
+    color: var(--ctp-red);
     font-weight: 500;
     text-align: center;
     animation: shake 0.5s ease-in-out;
@@ -815,9 +905,9 @@ select[id^="courseGpa_"]:hover {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid var(--ctp-overlay0);
     border-radius: 50%;
-    border-top-color: #ff6b9d;
+    border-top-color: var(--ctp-pink);
     animation: spin 1s ease-in-out infinite;
     margin-right: 10px;
 }
@@ -851,13 +941,13 @@ input[title]:hover::after {
 
 /* Enhanced course row for auto-filled credits */
 .course-credit[value="3"] {
-    background: rgba(78, 205, 196, 0.08);
-    border-color: rgba(78, 205, 196, 0.2);
+    background: rgba(166, 218, 149, 0.08);
+    border-color: rgba(166, 218, 149, 0.2);
 }
 
 .course-credit[value="3"]:focus {
-    background: rgba(78, 205, 196, 0.15);
-    border-color: rgba(78, 205, 196, 0.4);
+    background: rgba(166, 218, 149, 0.15);
+    border-color: rgba(166, 218, 149, 0.4);
 }
 
 /* Small helper text styling */
@@ -910,7 +1000,7 @@ small {
 }
 
 .how-to-use h2 {
-    color: #ff6b9d;
+    color: var(--ctp-pink);
     margin-bottom: 1.5rem;
     text-align: center;
     font-weight: 600;
@@ -927,25 +1017,25 @@ small {
     align-items: flex-start;
     gap: 1rem;
     padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--ctp-surface0);
+    border: 1px solid var(--ctp-surface1);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
 .step:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 107, 157, 0.3);
+    background: var(--ctp-surface1);
+    border-color: var(--ctp-pink);
     transform: translateY(-2px);
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.15),
-        0 0 20px rgba(255, 107, 157, 0.1);
+        0 8px 25px rgba(24, 25, 38, 0.15),
+        0 0 20px rgba(245, 189, 230, 0.1);
 }
 
 .step-number {
-    background: linear-gradient(135deg, #ff6b9d, #c471ed);
-    color: white;
+    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-mauve));
+    color: var(--ctp-base);
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -955,12 +1045,12 @@ small {
     font-weight: 600;
     font-size: 1.1rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 4px 15px rgba(245, 189, 230, 0.3);
 }
 
 .step p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--ctp-subtext1);
     line-height: 1.6;
     font-size: 1rem;
 }
