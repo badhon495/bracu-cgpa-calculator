@@ -1,7 +1,4 @@
 <div align="center">
-<p style="color: red; font-weight: bold; margin-bottom: 1rem;">
-This is the deployed version of the BRACU CGPA Calculator
-</p>
 
 # BRACU CGPA Calculator
 
@@ -9,7 +6,7 @@ This is the deployed version of the BRACU CGPA Calculator
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-A modern, responsive CGPA calculator specifically designed for BRAC University students with interactive animations.
+This is a modern, responsive CGPA calculator specifically designed for BRAC University students.
 </div>
 
 ## Features
@@ -77,3 +74,8 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is open source and available under the [MIT License](LICENSE).
 
+---
+
+<div align="center">
+  <p>⭐ Star this repo if you found it helpful!</p>
+</div>
