@@ -16,19 +16,7 @@ This is a modern, responsive CGPA calculator specifically designed for BRAC Univ
 - **Interactive Background**: Falling "CG" letters animation with collision physics
 - **Flexible Course Management**: Support for custom credit hours per course
 - **Input Validation**: Comprehensive error handling and user feedback
-- **Accessibility Features**: Support for reduced motion preferences and high contrast mode
 
-
-## Project Structure
-
-```
-bracu-cgpa-calculator/
-├── index.html          # Main HTML file
-├── style.css           # CSS styles and animations
-├── script.js           # Main JavaScript functionality
-├── simple-cg.js        # Background animation system
-└── README.md           # Project documentation
-```
 
 ## Getting Started
 
@@ -43,27 +31,16 @@ bracu-cgpa-calculator/
    ```
 
 3. **Open in browser**:
-   - Simply open `index.html` in your web browser
-   - Or use a local server for better development experience
+   - Simply open `index.html` in your web browser and start using the application.
 
-## How to Use
 
-1. **Enter Current Academic Information**:
-   - Input your current CGPA
-   - Enter total credits completed before this semester
-   - Specify number of courses in current semester
+## CGPA Calculation
+This formula calculates your grade point up to four decimal places. If you get a CGPA of 3.567 then it will be rounded to 3.57 in Connect.
 
-2. **Generate Course Fields**:
-   - Click "Generate Course Fields" to create input rows for each course
-   - Credits are auto-filled with 3 but can be customized
-
-3. **Fill Course Details**:
-   - Enter credits for each course (supports decimal values)
-   - Select achieved GPA from dropdown menu
-
-4. **Calculate New CGPA**:
-   - Click "Calculate New CGPA" to get your updated CGPA
-   - Result displays with 3 decimal precision
+```javascript
+CGPA = Total Quality Points / Total Credits
+```
+Here `Total Quality Points` is the sum of (Credits × Grade Points) for all courses, and `Total Credits` is the sum of all course credits.
 
 
 ## Contributing
