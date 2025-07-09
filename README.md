@@ -13,9 +13,10 @@ This is a modern, responsive CGPA calculator specifically designed for BRAC Univ
 
 - **Real-time CGPA Calculation**: Input your current CGPA, completed credits, and current semester courses to get your updated CGPA
 - **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
-- **Interactive Background**: Falling "CG" letters animation with collision physics
 - **Flexible Course Management**: Support for custom credit hours per course
 - **Input Validation**: Comprehensive error handling and user feedback
+- **Clean & Optimized**: Fast loading with minimal code and no unnecessary animations
+- **Accessibility Features**: Support for reduced motion preferences and keyboard navigation
 
 
 ## Getting Started
@@ -31,16 +32,27 @@ This is a modern, responsive CGPA calculator specifically designed for BRAC Univ
    ```
 
 3. **Open in browser**:
-   - Simply open `index.html` in your web browser and start using the application.
+   - Simply open `index.html` in your web browser
+   - Or use a local server for better development experience
 
+## How to Use
 
-## CGPA Calculation
-This formula calculates your grade point up to four decimal places. If you get a CGPA of 3.567 then it will be rounded to 3.57 in Connect.
+1. **Enter Current Academic Information**:
+   - Input your current CGPA
+   - Enter total credits completed before this semester
+   - Specify number of courses in current semester
 
-```javascript
-CGPA = Total Quality Points / Total Credits
-```
-Here `Total Quality Points` is the sum of (Credits × Grade Points) for all courses, and `Total Credits` is the sum of all course credits.
+2. **Generate Course Fields**:
+   - Click "Generate Course Fields" to create input rows for each course
+   - Credits are auto-filled with 3 but can be customized
+
+3. **Fill Course Details**:
+   - Enter credits for each course (supports decimal values)
+   - Select achieved GPA from dropdown menu
+
+4. **Calculate New CGPA**:
+   - Click "Calculate New CGPA" to get your updated CGPA
+   - Result displays with 3 decimal precision
 
 
 ## Contributing

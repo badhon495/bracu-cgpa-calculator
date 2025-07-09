@@ -1,1009 +1,307 @@
-/* CGPA Calculator - Catppuccin Macchiato Theme */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* BRACU CGPA Calculator - Clean & Optimized */
 
-/* Catppuccin Macchiato Color Variables */
-:root {
-    --ctp-rosewater: #f4dbd6;
-    --ctp-flamingo: #f0c6c6;
-    --ctp-pink: #f5bde6;
-    --ctp-mauve: #c6a0f6;
-    --ctp-red: #ed8796;
-    --ctp-maroon: #ee99a0;
-    --ctp-peach: #f5a97f;
-    --ctp-yellow: #eed49f;
-    --ctp-green: #a6da95;
-    --ctp-teal: #8bd5ca;
-    --ctp-sky: #91d7e3;
-    --ctp-sapphire: #7dc4e4;
-    --ctp-blue: #8aadf4;
-    --ctp-lavender: #b7bdf8;
-    --ctp-text: #cad3f5;
-    --ctp-subtext1: #b8c0e0;
-    --ctp-subtext0: #a5adcb;
-    --ctp-overlay2: #939ab7;
-    --ctp-overlay1: #8087a2;
-    --ctp-overlay0: #6e738d;
-    --ctp-surface2: #5b6078;
-    --ctp-surface1: #494d64;
-    --ctp-surface0: #363a4f;
-    --ctp-base: #24273a;
-    --ctp-mantle: #1e2030;
-    --ctp-crust: #181926;
-}
-
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+html {
+    font-display: swap;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: #24273a;
-    color: var(--ctp-text);
-    overflow-x: hidden;
-}
-
-.App {
     min-height: 100vh;
-    background: transparent;
-    position: relative;
-    z-index: 3;
+    line-height: 1.6;
+    color: #cad3f5;
 }
 
-/* Falling CG Letters Background */
-.falling-letters-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.falling-letter {
-    position: absolute;
-    pointer-events: none;
-    user-select: none;
-    will-change: transform;
-    z-index: 2;
-}
-
-@keyframes fallDown {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(calc(100vh + 100px)) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Simple fall animation for guaranteed visibility */
-@keyframes simpleFall {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(calc(100vh + 100px));
-        opacity: 0;
-    }
-}
-
-/* CG Fall animation - simple straight down movement */
-@keyframes cgFall {
-    0% {
-        transform: translateY(-100px) rotate(var(--rotation, 0deg));
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    95% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(calc(100vh + 100px)) rotate(var(--rotation, 0deg));
-        opacity: 0;
-    }
-}
-
-/* Enhanced fall animation with rotation and glow */
-@keyframes enhancedFall {
-    0% {
-        transform: translateY(-100px) rotate(0deg) scale(0.8);
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(50vh) rotate(180deg) scale(1);
-    }
-    95% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(calc(100vh + 100px)) rotate(360deg) scale(1.2);
-        opacity: 0;
-    }
-}
-
-/* Sparkle animation */
-@keyframes sparkleAnim {
-    0% {
-        transform: scale(0) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.5) rotate(180deg);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(0) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Test animation - simple and obvious */
-@keyframes testFall {
-    0% {
-        transform: translateY(-50px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(calc(100vh + 50px));
-        opacity: 0.5;
-    }
-}
-
-.test-letter {
-    animation: testFall 3s linear infinite !important;
-}
-
-.permanent-letter {
-    position: fixed !important;
-    z-index: 1000 !important;
-}
-
-/* Main Content */
-.content {
-    position: relative;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 2rem;
-    text-align: center;
-    background: transparent; /* Make completely transparent to allow letters to show */
 }
 
-h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-teal), var(--ctp-blue), var(--ctp-yellow), var(--ctp-mauve));
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #cad3f5;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f5bde6, #8bd5ca, #8aadf4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(245, 189, 230, 0.3);
-    animation: titleGlow 4s ease-in-out infinite alternate;
 }
 
-@keyframes titleGlow {
-    0% {
-        filter: drop-shadow(0 0 20px rgba(245, 189, 230, 0.3));
-    }
-    100% {
-        filter: drop-shadow(0 0 40px rgba(139, 213, 202, 0.4));
-    }
+.header p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
 }
 
-.content > p {
-    font-size: 1.2rem;
-    color: var(--ctp-subtext0);
-    margin-bottom: 0.5rem;
-    max-width: 600px;
-    line-height: 1.6;
-    animation: fadeInUp 1s ease-out 0.5s both;
+/* Simple Calculator Button */
+.simple-calculator-btn {
+    background: linear-gradient(135deg, #7dc4e4, #91d7e3);
+    color: #1e2030;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(125, 196, 228, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.simple-calculator-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(125, 196, 228, 0.4);
 }
 
-/* Calculator Container */
-.calculator-container {
-    background: rgba(54, 58, 79, 0.6);
-    backdrop-filter: blur(25px);
-    border: 1px solid var(--ctp-surface1);
+/* Main calculator card */
+.calculator-card {
+    background: #1e2030;
     border-radius: 24px;
-    padding: 3rem;
-    margin: 2rem 0;
-    max-width: 800px;
-    width: 100%;
-    box-shadow: 
-        0 25px 50px rgba(24, 25, 38, 0.4),
-        0 0 60px rgba(245, 189, 230, 0.05),
-        inset 0 1px 0 rgba(202, 211, 245, 0.2);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 1s ease-out 0.8s both;
-    position: relative;
-    overflow: hidden;
-}
-
-.calculator-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(202, 211, 245, 0.1), transparent);
-    transition: left 0.8s ease;
-}
-
-.calculator-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-        0 35px 70px rgba(24, 25, 38, 0.5), 
-        0 0 80px rgba(245, 189, 230, 0.15),
-        inset 0 1px 0 rgba(202, 211, 245, 0.3);
-    border-color: var(--ctp-surface2);
-}
-
-.calculator-container:hover::before {
-    left: 100%;
-}
-
-/* Section Styling */
-.input-section {
+    padding: 4rem 3rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: rgba(73, 77, 100, 0.3);
-    border-radius: 15px;
-    border: 1px solid var(--ctp-surface0);
-    transition: all 0.3s ease;
-    animation: slideInLeft 0.8s ease-out;
+    border: 1px solid #363a4f;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.calculator-container {
+    margin-bottom: 3rem;
 }
 
-.input-section:hover {
-    background: rgba(73, 77, 100, 0.5);
-    border-color: var(--ctp-surface1);
-    transform: translateX(5px);
+/* Input sections */
+.input-section {
+    background: #181926;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #363a4f;
 }
 
-h2 {
-    font-size: 1.8rem;
+.input-section h2 {
+    color: #8aadf4;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: var(--ctp-teal);
     text-align: center;
-    position: relative;
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--ctp-pink), var(--ctp-teal));
-    border-radius: 2px;
-}
-
-/* Form Styling */
+/* Form groups */
 .form-group {
     margin-bottom: 1.5rem;
-    animation: fadeInUp 0.6s ease-out;
 }
 
-label {
+.form-group label {
     display: block;
+    color: #b8c0e0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #5b6078;
+    border-radius: 12px;
+    background: #181926;
+    color: #cad3f5;
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--ctp-subtext1);
-    transition: color 0.3s ease;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    border: 2px solid var(--ctp-surface0);
-    border-radius: 12px;
-    background: var(--ctp-surface0);
-    color: var(--ctp-text);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease;
     font-family: inherit;
-    position: relative;
 }
 
-/* Select dropdown styling to match calculator-container glass-morphism */
-select {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    border: 1px solid var(--ctp-surface1);
-    border-radius: 12px;
-    background: var(--ctp-surface0) !important;
-    backdrop-filter: blur(25px);
-    color: var(--ctp-text);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: inherit;
-    position: relative;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1rem;
-    padding-right: 3rem;
-    box-shadow: 
-        0 8px 25px rgba(24, 25, 38, 0.15),
-        0 0 20px rgba(245, 189, 230, 0.02),
-        inset 0 1px 0 rgba(202, 211, 245, 0.1);
-}
-
-/* Enhanced glass-morphism dropdown menu styling - Fixed readability */
-select[multiple],
-select[size] {
-    border-radius: 25px;
-    overflow: hidden;
-    background: var(--ctp-mantle) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid var(--ctp-surface1) !important;
-    box-shadow: 
-        0 8px 25px rgba(24, 25, 38, 0.25),
-        0 0 20px rgba(245, 189, 230, 0.05),
-        inset 0 1px 0 rgba(202, 211, 245, 0.05) !important;
-}
-
-/* Firefox specific glass-morphism dropdown styling - Enhanced for Mozilla */
-@-moz-document url-prefix() {
-    select {
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.08) !important;
-        backdrop-filter: blur(25px) !important;
-    }
-    
-    select option {
-        background: #2a292e !important;
-        background-image: linear-gradient(135deg, 
-            rgba(20, 20, 30, 0.95), 
-            rgba(40, 40, 50, 0.95)) !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
-    }
-    
-    select option:hover {
-        background: #3a3940 !important;
-        background-image: linear-gradient(135deg, 
-            rgba(50, 50, 60, 0.95), 
-            rgba(70, 70, 80, 0.95)) !important;
-        color: #ffffff !important;
-        border-color: rgba(255, 107, 157, 0.3) !important;
-    }
-    
-    select option:checked,
-    select option:selected {
-        background: rgba(255, 107, 157, 0.4) !important;
-        background-image: linear-gradient(135deg, 
-            rgba(255, 107, 157, 0.35), 
-            rgba(196, 113, 237, 0.35)) !important;
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        border-color: rgba(255, 107, 157, 0.5) !important;
-    }
-    
-    select option:disabled {
-        background: #1a1a1e !important;
-        color: rgba(255, 255, 255, 0.4) !important;
-        border-color: rgba(255, 255, 255, 0.05) !important;
-    }
-}
-
-/* Select dropdown menu styling - rounds the options list */
-select {
-    border-radius: 12px;
-}
-
-/* Enhanced glass-morphism scrollbar for dropdown */
-select::-webkit-scrollbar {
-    width: 8px;
-    background: var(--ctp-surface0);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-}
-
-select::-webkit-scrollbar-track {
-    background: var(--ctp-surface1);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    border: 1px solid var(--ctp-surface2);
-    box-shadow: inset 0 1px 3px rgba(24, 25, 38, 0.1);
-}
-
-select::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, 
-        rgba(245, 189, 230, 0.6), 
-        rgba(198, 160, 246, 0.6));
-    backdrop-filter: blur(20px);
-    border-radius: 25px;
-    border: 1px solid var(--ctp-overlay0);
-    box-shadow: 
-        0 2px 8px rgba(245, 189, 230, 0.3),
-        inset 0 1px 0 rgba(202, 211, 245, 0.3);
-}
-
-select::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, 
-        rgba(245, 189, 230, 0.8), 
-        rgba(198, 160, 246, 0.8));
-    box-shadow: 
-        0 4px 12px rgba(245, 189, 230, 0.4),
-        inset 0 1px 0 rgba(202, 211, 245, 0.4);
-}
-
-/* Glass-morphism dropdown options styling - Fixed readability with Firefox fallback */
-select option {
-    /* Fallback for browsers without backdrop-filter support */
-    background: var(--ctp-mantle) !important;
-    background-image: linear-gradient(135deg, 
-        rgba(30, 32, 48, 0.95), 
-        rgba(54, 58, 79, 0.95)) !important;
-    
-    /* Enhanced glass effect for supporting browsers */
-    background: var(--ctp-mantle) !important;
-    backdrop-filter: blur(15px) !important;
-    
-    border: 1px solid var(--ctp-surface0) !important;
-    color: var(--ctp-text) !important;
-    padding: 0.8rem !important;
-    font-size: 1rem !important;
-    border-radius: 0 !important;
-    text-shadow: 0 1px 2px rgba(24, 25, 38, 0.3) !important;
-    box-shadow: 
-        0 4px 15px rgba(24, 25, 38, 0.2),
-        0 0 10px rgba(245, 189, 230, 0.05),
-        inset 0 1px 0 rgba(202, 211, 245, 0.05) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* First and last option rounded corners for dropdown menu */
-select option:first-child {
-    border-radius: 25px 25px 0 0 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-select option:last-child {
-    border-radius: 0 0 25px 25px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-/* Glass-morphism hover and selected states - Enhanced Firefox compatibility */
-select option:hover {
-    /* Fallback for browsers without backdrop-filter support */
-    background: #3a3940 !important;
-    background-image: linear-gradient(135deg, 
-        rgba(50, 50, 60, 0.95), 
-        rgba(70, 70, 80, 0.95)) !important;
-    
-    /* Enhanced glass effect for supporting browsers */
-    background: rgba(40, 40, 50, 0.9) !important;
-    backdrop-filter: blur(20px) !important;
-    
-    color: #ffffff !important;
-    border-color: rgba(255, 107, 157, 0.3) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.25),
-        0 0 15px rgba(255, 107, 157, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-    transform: translateY(-1px) !important;
-}
-
-select option:checked,
-select option:selected {
-    /* Fallback for browsers without backdrop-filter support */
-    background: rgba(255, 107, 157, 0.4) !important;
-    background-image: linear-gradient(135deg, 
-        rgba(255, 107, 157, 0.35), 
-        rgba(196, 113, 237, 0.35)) !important;
-    
-    /* Enhanced glass effect for supporting browsers */
-    background: rgba(255, 107, 157, 0.3) !important;
-    backdrop-filter: blur(20px) !important;
-    
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
-    border-color: rgba(255, 107, 157, 0.5) !important;
-    box-shadow: 
-        0 8px 25px rgba(255, 107, 157, 0.4),
-        0 0 20px rgba(255, 107, 157, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-}
-
-/* Disabled option glass-morphism styling */
-select option:disabled {
-    background: #1a1a1e !important;
-    backdrop-filter: blur(10px) !important;
-    color: rgba(255, 255, 255, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    text-shadow: none !important;
-    box-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
-}
-
-/* Hover states for both inputs and selects */
-input[type="number"]:focus,
-select:focus {
+.form-group input:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.2),
-        0 0 30px rgba(255, 107, 157, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
+    border-color: #8aadf4;
+    background: #1e2030;
 }
 
-select:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 
-        0 12px 30px rgba(0, 0, 0, 0.18),
-        0 0 25px rgba(255, 107, 157, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
+.form-group input:hover {
+    border-color: #6e738d;
 }
 
-input[type="number"]::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* Remove spinner buttons from number inputs */
+/* Remove number input spinners */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    appearance: none;
     margin: 0;
 }
 
-/* For Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
 
-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+/* Buttons */
+.generate-btn, .calculate-btn {
+    background: linear-gradient(135deg, #8aadf4, #c6a0f6);
+    color: #1e2030;
     border: none;
+    padding: 1rem 2rem;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-teal));
-    color: var(--ctp-base);
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: inherit;
-    position: relative;
-    overflow: hidden;
-    margin: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(138, 173, 244, 0.3);
+    width: 100%;
     text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(202, 211, 245, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(245, 189, 230, 0.4);
-    filter: brightness(1.1);
-}
-
-button:hover::before {
-    left: 100%;
-}
-
-button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(245, 189, 230, 0.3);
-}
-
-button.generate {
-    background: linear-gradient(135deg, var(--ctp-yellow), var(--ctp-mauve));
-}
-
-button.generate:hover {
-    box-shadow: 0 15px 35px rgba(238, 212, 159, 0.4);
-}
-
-/* Simple Calculator Button - Inspired by Extended Version */
-.simple-calculator-btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border: 2px solid var(--ctp-teal);
-    border-radius: 8px;
-    background: transparent;
-    color: var(--ctp-teal);
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: inherit;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    text-transform: none;
     letter-spacing: 0.5px;
-    margin: 0.5rem;
-    animation: fadeInUp 1s ease-out 1.4s both;
 }
 
-.simple-calculator-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(139, 213, 202, 0.2), transparent);
-    transition: left 0.6s ease;
-    z-index: 0;
-}
-
-.simple-calculator-btn:hover {
-    background: var(--ctp-teal);
-    color: var(--ctp-base);
+.generate-btn:hover, .calculate-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 
-        0 8px 20px rgba(139, 213, 202, 0.3),
-        0 0 30px rgba(139, 213, 202, 0.2);
-    border-color: var(--ctp-teal);
+    box-shadow: 0 8px 25px rgba(138, 173, 244, 0.4);
 }
 
-.simple-calculator-btn:hover::before {
-    left: 100%;
-}
-
-.simple-calculator-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(139, 213, 202, 0.2);
-    transition: all 0.1s ease;
-}
-
-/* Focus state for accessibility */
-.simple-calculator-btn:focus-visible {
-    outline: 2px solid var(--ctp-teal);
-    outline-offset: 2px;
-}
-
-/* Course Row Styling */
+/* Course rows */
 .course-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 2rem;
-    background: var(--ctp-surface0);
-    border: 1px solid var(--ctp-surface1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #1e2030;
+    border: 1px solid #363a4f;
     border-radius: 12px;
-    transition: all 0.3s ease;
-    animation: slideInRight 0.6s ease-out;
-    width: 100%;
-}
-
-@keyframes slideInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    transition: transform 0.2s ease;
 }
 
 .course-row:hover {
-    background: var(--ctp-surface1);
-    border-color: var(--ctp-surface2);
-    transform: scale(1.02);
-    box-shadow: 0 5px 20px rgba(24, 25, 38, 0.2);
-}
-
-.course-row > label {
-    margin: 0;
-    flex: 0 0 auto;
-    min-width: 120px;
-    font-weight: 600;
-    color: var(--ctp-blue);
-    text-shadow: 0 0 10px rgba(138, 173, 244, 0.3);
-}
-
-.course-row span {
-    font-size: 0.9rem;
-    color: var(--ctp-subtext1);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.course-row input[type="number"] {
-    width: 120px;
-    padding: 0.8rem 1rem;
-    margin: 0;
-    background: var(--ctp-surface1);
-    flex: 0 0 auto;
-}
-
-/* Course GPA select styling */
-.course-row select.course-gpa,
-select.course-gpa,
-select[id^="courseGpa_"] {
-    width: 120px;
-    padding: 0.8rem 1rem;
-    padding-right: 2.5rem;
-    margin: 0;
-    background-color: var(--ctp-surface1) !important;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 0.75rem center !important;
-    background-size: 1rem !important;
-    backdrop-filter: blur(25px);
-    flex: 0 0 auto;
-    border: 1px solid var(--ctp-surface2);
-    border-radius: 12px;
-    color: var(--ctp-text);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    cursor: pointer;
-    box-shadow: 
-        0 8px 25px rgba(24, 25, 38, 0.15),
-        0 0 20px rgba(245, 189, 230, 0.02),
-        inset 0 1px 0 rgba(202, 211, 245, 0.1);
-}
-
-/* Course GPA select focus and hover states */
-.course-row select.course-gpa:focus,
-select.course-gpa:focus,
-select[id^="courseGpa_"]:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.2),
-        0 0 30px rgba(255, 107, 157, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.12) !important;
     transform: translateY(-2px);
 }
 
-.course-row select.course-gpa:hover,
-select.course-gpa:hover,
-select[id^="courseGpa_"]:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.12) !important;
-    box-shadow: 
-        0 12px 30px rgba(0, 0, 0, 0.18),
-        0 0 25px rgba(255, 107, 157, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
-}
-
-/* Calculate button inside semester section */
-#semesterCoursesSection button {
-    margin-top: 1.5rem;
-    width: 100%;
-    max-width: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Result and Error Styling */
-#result {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    font-size: 1.3rem;
+.course-row label {
+    color: #8aadf4;
     font-weight: 600;
-    color: var(--ctp-green);
-    background: rgba(166, 218, 149, 0.1);
-    border: 1px solid rgba(166, 218, 149, 0.3);
-    border-radius: 12px;
+    margin: 0;
+    min-width: 120px;
+}
+
+.course-row input,
+.course-row select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #5b6078;
+    border-radius: 8px;
+    background: #181926;
+    color: #cad3f5;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.course-row input:focus,
+.course-row select:focus {
+    outline: none;
+    border-color: #8aadf4;
+    background: #1e2030;
+}
+
+.course-row select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+/* Loading section */
+.loading-section {
     text-align: center;
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 20px rgba(166, 218, 149, 0.2);
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 20px rgba(166, 218, 149, 0.2);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(166, 218, 149, 0.4);
-    }
-}
-
-.error {
-    margin-top: 1rem;
-    padding: 1rem 1.5rem;
-    background: rgba(237, 135, 150, 0.1);
-    border: 1px solid rgba(237, 135, 150, 0.3);
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #181926;
     border-radius: 12px;
-    color: var(--ctp-red);
-    font-weight: 500;
-    text-align: center;
-    animation: shake 0.5s ease-in-out;
+    border: 1px solid #363a4f;
 }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+.loading-content {
+    display: inline-flex;
+    align-items: center;
+    color: #cad3f5;
+    font-weight: 600;
+    gap: 0.75rem;
 }
 
-/* Loading Animation */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid var(--ctp-overlay0);
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #5b6078;
+    border-top: 3px solid #8aadf4;
     border-radius: 50%;
-    border-top-color: var(--ctp-pink);
-    animation: spin 1s ease-in-out infinite;
-    margin-right: 10px;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Info notification styles */
-.course-info {
-    animation: fadeInUp 0.5s ease-out;
-    transition: opacity 0.3s ease;
+/* Result section */
+.result-section {
+    background: linear-gradient(135deg, #a6da95, #94e2d5);
+    color: #1e2030;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    box-shadow: 0 8px 25px rgba(166, 218, 149, 0.3);
 }
 
-/* Tooltip enhancements */
-input[title]:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    z-index: 1000;
-    margin-bottom: 5px;
-}
-
-/* Enhanced course row for auto-filled credits */
-.course-credit[value="3"] {
-    background: rgba(166, 218, 149, 0.08);
-    border-color: rgba(166, 218, 149, 0.2);
-}
-
-.course-credit[value="3"]:focus {
-    background: rgba(166, 218, 149, 0.15);
-    border-color: rgba(166, 218, 149, 0.4);
-}
-
-/* Small helper text styling */
-small {
-    animation: fadeIn 0.8s ease-out 0.5s both;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Hidden sections styling */
-.hidden-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-out;
-    pointer-events: none;
-}
-
-.show-section {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* Smooth reveal animations */
-@keyframes slideInDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.reveal-animation {
-    animation: slideInDown 0.6s ease-out;
-}
-
-/* How to Use Section Styling */
-.how-to-use {
+/* Error message */
+.error-message {
+    background: rgba(237, 135, 150, 0.1);
+    border: 1px solid rgba(237, 135, 150, 0.3);
+    color: #ed8796;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
     margin-top: 2rem;
 }
 
-.how-to-use h2 {
-    color: var(--ctp-pink);
+/* How to Use Section */
+.how-to-use-card {
+    background: #1e2030;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #363a4f;
+    margin-top: 2rem;
+}
+
+.how-to-use-card h2 {
+    color: #f5bde6;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
     text-align: center;
-    font-weight: 600;
 }
 
 .steps-container {
@@ -1016,26 +314,15 @@ small {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1.2rem;
-    background: var(--ctp-surface0);
-    border: 1px solid var(--ctp-surface1);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.step:hover {
-    background: var(--ctp-surface1);
-    border-color: var(--ctp-pink);
-    transform: translateY(-2px);
-    box-shadow: 
-        0 8px 25px rgba(24, 25, 38, 0.15),
-        0 0 20px rgba(245, 189, 230, 0.1);
+    padding: 1.5rem;
+    background: #181926;
+    border: 1px solid #363a4f;
+    border-radius: 12px;
 }
 
 .step-number {
-    background: linear-gradient(135deg, var(--ctp-pink), var(--ctp-mauve));
-    color: var(--ctp-base);
+    background: linear-gradient(135deg, #f5bde6, #c6a0f6);
+    color: #1e2030;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -1045,18 +332,62 @@ small {
     font-weight: 600;
     font-size: 1.1rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(245, 189, 230, 0.3);
 }
 
-.step p {
+.step-content p {
     margin: 0;
-    color: var(--ctp-subtext1);
+    color: #b8c0e0;
     line-height: 1.6;
     font-size: 1rem;
 }
 
-/* Responsive design for steps */
+.step-content a {
+    color: #7dc4e4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.step-content a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .calculator-card {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+        margin: 0 auto 2rem auto;
+    }
+    
+    .input-section {
+        padding: 1.5rem;
+    }
+    
+    .course-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .course-row input,
+    .course-row select {
+        width: 100%;
+    }
+    
+    .course-row label {
+        min-width: auto;
+        text-align: center;
+    }
+    
     .step {
         padding: 1rem;
         gap: 0.8rem;
@@ -1068,124 +399,48 @@ small {
         font-size: 0.9rem;
     }
     
-    .step p {
+    .step-content p {
         font-size: 0.9rem;
-    }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    .content {
-        padding: 1rem;
-    }
-    
-    .calculator-container {
-        padding: 2rem 1.5rem;
-        margin: 1rem 0;
-    }
-    
-    .course-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
-    
-    .course-row > label {
-        flex-basis: auto;
-        text-align: center;
-    }
-    
-    .course-row input[type="number"] {
-        width: 100%;
-    }
-    
-    .course-row select.course-gpa {
-        width: 100%;
-    }
-    
-    input[type="number"], button {
-        font-size: 1rem;
-    }
-    
-    .floating-particles-container {
-        display: none; /* Hide particles on mobile for better performance */
-    }
-    
-    /* Additional mobile optimizations for falling letters */
-    .falling-letter {
-        font-size: clamp(20px, 5vw, 40px) !important;
-        animation-duration: 6s !important; /* Slower on mobile */
     }
 }
 
 @media (max-width: 480px) {
-    h1 {
+    .header h1 {
         font-size: 2rem;
     }
     
-    .content > p {
-        font-size: 1rem;
-    }
-    
-    .calculator-container {
+    .calculator-card {
         padding: 1.5rem 1rem;
     }
     
-    h2 {
-        font-size: 1.5rem;
+    .input-section {
+        padding: 1rem;
     }
     
-    button {
+    .generate-btn, .calculate-btn {
         padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .falling-letter {
-        font-size: clamp(15px, 4vw, 30px) !important;
-        opacity: 0.5 !important; /* More subtle on small screens */
+        font-size: 1rem;
     }
 }
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-    .calculator-container {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.15);
-    }
-    
-    input[type="number"] {
-        background: rgba(255, 255, 255, 0.08);
-    }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-    .calculator-container {
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    input[type="number"] {
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    button {
-        border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-}
-
-/* Reduced motion for accessibility */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
-    .floating-particle {
-        animation: none;
-    }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #8aadf4;
+    outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(138, 173, 244, 0.3);
+    color: #cad3f5;
 }
