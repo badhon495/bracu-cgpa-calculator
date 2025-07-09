@@ -1,7 +1,7 @@
 {
-  "name": "BRACU CGPA Calculator - Free BRAC University GPA Calculator",
+  "name": "BRACU CGPA Calculator",
   "short_name": "BRACU CGPA Calc",
-  "description": "Free CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance easily.",
+  "description": "CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance easily.",
   "start_url": "/bracu-cgpa-calculator/",
   "scope": "/bracu-cgpa-calculator/",
   "display": "standalone",
