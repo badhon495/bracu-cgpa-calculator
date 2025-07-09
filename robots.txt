@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://badhon495.github.io/bracu-cgpa-calculator/sitemap.xml

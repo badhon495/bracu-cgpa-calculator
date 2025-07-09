@@ -1,88 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">           
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
     <title>BRACU CGPA Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-    <link rel="stylesheet" href="style.css">
-    <script src="simple-cg.js"></script>
+    <meta name="description" content="Free BRACU CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance. Easy-to-use BRACU CG calculator with accurate grading system." />
+    <meta name="keywords" content="bracu cgpa calculator, brac university cgpa calculator, bracu cg calculator, cgpa calculator bracu, brac cgpa calculator, bracu gpa calculator, bracu calculator, bracu cgpa calculation, cgpa calculator brac, brac cg calculator, bracu grade calculator, bracu cgpa chart, bracu cgpa grading system, how to calculate cgpa bracu, brac university gpa calculator, bracu academic calculator" />
+    <meta name="author" content="BRACU CGPA Calculator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="BRACU CGPA Calculator - Free BRAC University GPA Calculator" />
+    <meta property="og:description" content="Free BRACU CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance easily." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://badhon495.github.io/bracu-cgpa-calculator/" />
+    <meta property="og:image" content="https://badhon495.github.io/bracu-cgpa-calculator/og-image.jpg" />
+    <meta property="og:site_name" content="BRACU CGPA Calculator" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BRACU CGPA Calculator - Free BRAC University GPA Calculator" />
+    <meta name="twitter:description" content="Free BRACU CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance easily." />
+    <meta name="twitter:image" content="https://badhon495.github.io/bracu-cgpa-calculator/og-image.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://badhon495.github.io/bracu-cgpa-calculator/" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='65%25' font-size='70' text-anchor='middle' fill='%238dd3e3' font-family='sans-serif' font-weight='bold'%3ECG%3C/text%3E%3C/svg%3E"
+    />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BRACU CGPA Calculator",
+      "description": "Free CGPA calculator for BRAC University (BRACU) students to calculate GPA, semester grades, and academic performance",
+      "url": "https://badhon495.github.io/bracu-cgpa-calculator/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "BRACU CGPA Calculator",
+        "url": "https://badhon495.github.io/bracu-cgpa-calculator/"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "BRAC University Students"
+      },
+      "about": {
+        "@type": "EducationalOrganization",
+        "name": "BRAC University",
+        "alternateName": "BRACU",
+        "url": "https://www.bracu.ac.bd/"
+      }
+    }
+    </script>
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #24273a;
+        min-height: 100vh;
+        color: #cad3f5;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      body.loaded {
+        opacity: 1;
+      }
+
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #24273a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: #cad3f5;
+      }
+
+      .initial-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .loader-content {
+        text-align: center;
+      }
+
+      .loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(202, 211, 245, 0.3);
+        border-left: 4px solid #cad3f5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style" />
+    <link rel="preload" href="script.js" as="script" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css" />
   </head>
-<body>
-    <div class="App">
-        <!-- Falling CG Letters Background -->
-        <div class="falling-letters-container" id="fallingLettersContainer"></div>
-        
-        <!-- Main Content -->
-        <div class="content">
-            <h1>BRACU CGPA Calculator</h1>
-            <p>Don’t worry, everything will be fine!</p>
-            <div style="margin-top: 1rem; text-align: center;">
-                <button onclick="window.open('https://badhon495.github.io/should-i-retake/', '_blank')" class="simple-calculator-btn">
-                    Extended Version
-                </button>
-            </div>
-
-            <div class="calculator-container">
-                <!-- Current Academic Information -->
-                <div class="input-section">
-                    <h2>Current Academic Status</h2>
-                    
-                    <div class="form-group">
-                        <label for="currentCgpa">Current CGPA</label>
-                        <input type="number" id="currentCgpa" placeholder="e.g. 3.25" min="0" max="4" step="0.01">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="previousCredits">Total Credits Completed (before this semester)</label>
-                        <input type="number" id="previousCredits" placeholder="e.g. 12" min="0">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="numCourses">Number of Courses This Semester</label>
-                        <input type="number" id="numCourses" placeholder="e.g. 4" min="0">
-                        <small style="color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; margin-top: 0.5rem; display: block;">
-                            💡 Course credits will be auto-filled with 3, but you can edit them
-                        </small>
-                    </div>
-                    
-                    <button id="generateCoursesButton" class="generate">Generate Course Fields</button>
-                </div>
-
-                <!-- Semester Courses -->
-                <div class="input-section" id="semesterCoursesSection" style="display: none;">
-                    <h2>Semester Courses</h2>
-                    <div id="courseInputsContainer">
-                    </div>
-                    <button id="calculateButton">Calculate New CGPA</button>
-                </div>
-
-                <div id="result"></div>
-                <div id="error-message" class="error" style="display: none;"></div>
-            </div>
-
-            <!-- How to Use Section -->
-            <div class="calculator-container how-to-use">
-                <h2>How to Use?</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <span class="step-number">1</span>
-                        <p>You can edit the amount of credits for a course. If your thesis is worth 4 credits, then edit the credit field of that course and change it to 4.</p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">2</span>
-                        <p>The CGPA gets rounded up if the value of the third decimal digit is 5 or more. For example, if you got 3.895, then the system will show it as 3.90.</p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">3</span>
-                        <p>Contribute to the project if you can! Your improvements and suggestions are always welcome. Visit the <a href="https://github.com/badhon495/BRACU-CGPA-Calculator" target="_blank" style="color: #8bd5ca; text-decoration: none;">GitHub repository</a> to contribute.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <body>
+    
+    <!-- Initial loading screen to prevent FOUC -->
+    <div class="initial-loader" id="initialLoader">
+      <div class="loader-content">
+        <h1>BRACU CGPA Calculator</h1>
+        <div class="loader-spinner"></div>
+        <p>Loading your CGPA calculator...</p>
+      </div>
     </div>
 
-    <!-- Floating Particles JavaScript -->
+    <!-- Main Container -->
+    <div class="container" id="main-content">
+      <!-- Header Section -->
+      <header class="header">
+        <h1>BRACU CGPA Calculator</h1>
+        <p>Don't worry, everything will be fine!</p>
+        <div style="margin-top: 1.5rem">
+          <button
+            onclick="window.open('https://badhon495.github.io/should-i-retake/', '_blank')"
+            class="simple-calculator-btn"
+            aria-label="Open Extended BRACU Calculator"
+          >
+            Extended BRACU Calculator
+          </button>
+        </div>
+      </header>
+
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="calculator-container">
+          <!-- Current Academic Information -->
+          <div class="input-section">
+            <h2>Current Academic Status</h2>
+
+            <div class="form-group">
+              <label for="currentCgpa">Current CGPA</label>
+              <input
+                type="number"
+                id="currentCgpa"
+                placeholder="e.g. 3.25"
+                min="0"
+                max="4"
+                step="0.01"
+                aria-label="Enter your current CGPA from BRACU"
+                aria-describedby="cgpa-help"
+              />
+              <small id="cgpa-help" class="input-help">Enter your current CGPA from BRAC University (0.00 to 4.00)</small>
+            </div>
+
+            <div class="form-group">
+              <label for="previousCredits"
+                >Total Credits Completed (before this semester)</label
+              >
+              <input
+                type="number"
+                id="previousCredits"
+                placeholder="e.g. 12"
+                min="0"
+                aria-label="Enter total credits completed before this semester"
+                aria-describedby="credits-help"
+              />
+              <small id="credits-help" class="input-help">Total credit hours you've completed at BRACU</small>
+            </div>
+
+            <div class="form-group">
+              <label for="numCourses">Number of Courses This Semester</label>
+              <input
+                type="number"
+                id="numCourses"
+                placeholder="e.g. 4"
+                min="0"
+                max="10"
+                aria-label="Enter number of courses this semester"
+                aria-describedby="courses-help"
+              />
+              <small id="courses-help" class="input-help">
+                💡 Course credits will be auto-filled with 3, but you can edit
+                them. Maximum 10 courses allowed.
+              </small>
+            </div>
+
+            <button id="generateCoursesButton" class="generate-btn" aria-label="Generate course input fields">
+              Generate Course Fields
+            </button>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div
+            id="loadingIndicator"
+            class="loading-section"
+            style="display: none"
+            aria-live="polite"
+            aria-label="Loading indicator"
+          >
+            <div class="loading-content">
+              <div class="spinner"></div>
+              Processing your courses...
+            </div>
+          </div>
+
+          <!-- Semester Courses -->
+          <div
+            class="input-section"
+            id="semesterCoursesSection"
+            style="display: none"
+            role="region"
+            aria-labelledby="semester-courses-heading"
+          >
+            <h2 id="semester-courses-heading">Semester Courses</h2>
+            <div id="courseInputsContainer" role="group" aria-label="Course input fields"></div>
+            <button id="calculateButton" class="calculate-btn" aria-label="Calculate your new CGPA">
+              Calculate New CGPA
+            </button>
+          </div>
+
+          <div id="result" class="result-section" style="display: none" role="region" aria-live="polite" aria-label="CGPA calculation result"></div>
+          <div
+            id="error-message"
+            class="error-message"
+            style="display: none"
+            role="alert"
+            aria-live="assertive"
+          ></div>
+        </div>
+
+        <!-- How to Use Section -->
+        <div class="how-to-use-card">
+          <h2>How to Use the BRACU CGPA Calculator?</h2>
+          <div class="steps-container">
+            <div class="step">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <p>
+                  <strong>Enter Your Current CGPA:</strong> Input your current CGPA from BRAC University. This BRACU CG calculator supports the standard 4.0 grading scale used by BRACU.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <p>
+                  <strong>Add Course Credits:</strong> You can edit the credits for each course. If your thesis or project is worth 4 credits, simply change the credit field to 4. This BRACU calculator handles variable credit courses.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <p>
+                  <strong>BRACU Grading System:</strong> The CGPA gets rounded up if the third decimal digit is 5 or more. For example, 3.895 becomes 3.90 according to BRAC University's grading system.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">4</span>
+              <div class="step-content">
+                <p>
+                  <strong>Contribute to BRACU Community:</strong> Help improve this BRACU CGPA calculator! Visit our
+                  <a
+                    href="https://github.com/badhon495/BRACU-CGPA-Calculator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >GitHub repository</a
+                  >
+                  to contribute and suggest improvements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <script src="script.js"></script>
-</body>
+
+    <!-- Loading state management -->
+    <script>
+      function hideLoader() {
+        const loader = document.getElementById("initialLoader");
+        const body = document.body;
+
+        if (loader && body) {
+          loader.classList.add("hidden");
+          body.classList.add("loaded");
+        }
+      }
+
+      // Hide loader when DOM is ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () =>
+          setTimeout(hideLoader, 100)
+        );
+      } else {
+        setTimeout(hideLoader, 100);
+      }
+
+      // Fallback
+      window.addEventListener("load", hideLoader);
+      setTimeout(hideLoader, 2000);
+    </script>
+  </body>
 </html>
