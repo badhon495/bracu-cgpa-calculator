@@ -229,7 +229,7 @@ class CGPACalculator {
                     ${this.roundToTwoDecimals(newCgpa)}
                 </div>
                 <div style="font-size: 0.9rem; opacity: 0.7;">
-                    Total Credits: ${finalTotalCredits} | Up to 3 digits: ${newCgpa.toFixed(3)}
+                    Total Credits: ${finalTotalCredits} | 3 Digits: ${newCgpa.toFixed(3)}
                 </div>
             `;
             
