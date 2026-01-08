@@ -154,7 +154,15 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print" 
+      onload="this.media='all'; this.onload=null;"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="style.css" as="style" />
@@ -162,6 +170,36 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css" />
+    
+    <!-- Font loading script with timeout -->
+    <script>
+      (function() {
+        const FONT_TIMEOUT = 500;
+        let fontLoaded = false;
+        let timeoutExpired = false;
+        
+        const timeoutId = setTimeout(function() {
+          timeoutExpired = true;
+        }, FONT_TIMEOUT);
+        
+        if ('fonts' in document) {
+          Promise.race([
+            document.fonts.load('400 1em Inter'),
+            document.fonts.load('600 1em Inter')
+          ]).then(function() {
+            clearTimeout(timeoutId);
+            if (!timeoutExpired) {
+              fontLoaded = true;
+              document.body.classList.add('fonts-loaded');
+            }
+          }).catch(function() {
+            clearTimeout(timeoutId);
+          });
+        } else {
+          clearTimeout(timeoutId);
+        }
+      })();
+    </script>
   </head>
   <body>
     
