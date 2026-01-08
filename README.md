@@ -1,6 +1,12 @@
 <div align="center">
 
 # BRACU CGPA Calculator
+<h2 style="color: red; font-size: 24px;">
+🚨 THIS IS THE DEPLOYED VERSION OF THE bracu-cgpa-calculator WEBSITE 🚨
+</h2>
+<h3 style="color: red;">
+DO NOT COPY IT AS IT CONTAINS GOOGLE ANALYTICS AND OTHER PERSONAL CONFIGURATIONS THAT ARE NOT MEANT TO BE COPIED!
+</h3>
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
