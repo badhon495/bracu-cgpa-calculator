@@ -1,12 +1,18 @@
 {
+  "id": "/bracu-cgpa-calculator/",
   "name": "BRACU CGPA Calculator",
-  "short_name": "BRACU CGPA Calc",
-  "description": "CGPA calculator for BRAC University students. Calculate your GPA, semester grades, and academic performance easily.",
+  "short_name": "BRACU CGPA",
+  "description": "Free, ad-free CGPA calculator for BRAC University students. Calculate GPA, semester grades, and cumulative academic performance instantly.",
   "start_url": "/bracu-cgpa-calculator/",
   "scope": "/bracu-cgpa-calculator/",
   "display": "standalone",
   "background_color": "#24273a",
   "theme_color": "#8bd5ca",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "categories": ["education", "utilities"],
   "icons": [
     {
       "src": "favicon-16x16.png",
@@ -24,12 +30,30 @@
       "type": "image/png"
     },
     {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
       "src": "favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
-  "categories": ["education", "utilities"],
-  "lang": "en",
-  "orientation": "portrait-primary"
+  "screenshots": [
+    {
+      "src": "og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "BRACU CGPA Calculator – Fast & Ad-Free Grade Calculator"
+    }
+  ]
 }
