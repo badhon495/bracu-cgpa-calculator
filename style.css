@@ -1,5 +1,7 @@
 /* BRACU CGPA Calculator - Clean & Optimized */
 
+.hidden { display: none; }
+
 /* Reset and base styles */
 * {
     margin: 0;
