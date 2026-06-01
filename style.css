@@ -17,6 +17,14 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     color: #cad3f5;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 body.fonts-loaded {
@@ -78,7 +86,7 @@ body.fonts-loaded {
 .calculator-card {
     background: #1e2030;
     border-radius: 24px;
-    padding: 4rem 3rem;
+    padding: 3rem;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
     border: 1px solid #363a4f;
@@ -88,7 +96,7 @@ body.fonts-loaded {
 }
 
 .calculator-container {
-    margin-bottom: 3rem;
+    margin-bottom: 0;
 }
 
 /* Input sections */
@@ -96,7 +104,7 @@ body.fonts-loaded {
     background: #181926;
     border-radius: 16px;
     padding: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: 1px solid #363a4f;
 }
 
@@ -634,12 +642,23 @@ a.simple-calculator-btn {
 /* Footer */
 .site-footer {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     color: rgba(202, 211, 245, 0.5);
     font-size: 0.85rem;
     line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+}
+
+.footer-sep {
+    color: rgba(202, 211, 245, 0.25);
 }
 
 .site-footer a {
